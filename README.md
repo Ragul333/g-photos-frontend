@@ -1,12 +1,50 @@
-# React + Vite
+# Google Photos Clone - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+This is the frontend part of a Google Photos clone application built with React.js. It provides a user-friendly interface to upload, view, manage, and organize photos with limited features similar to Google Photos.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Photo Upload**
+  - Upload photos via a modal popup with image preview before confirmation.
+  - Supports multiple image uploads.
+  
+- **Photo Gallery**
+  - Display all uploaded photos in a grid layout.
 
-## Expanding the ESLint configuration
+- **Full-Screen Photo Preview**
+  - Click on any photo to open it in a full-screen preview.
+  - Photo view includes options to favorite, trash, or restore photos.
+  - Info panel slides in from the right showing photo metadata (tags, upload date, info).
+  - The preview panel dynamically adjusts layout when the info panel is toggled.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Favorites**
+  - Mark/unmark photos as favorites.
+  - View all favorite photos in a dedicated section.
+
+- **Trash / Soft Delete**
+  - Soft delete photos (move to Trash instead of permanent delete).
+  - Restore photos from Trash.
+  - Permanent delete photos from Trash.
+
+- **Tags and Metadata**
+  - Add, edit, and view tags associated with each photo.
+  - Search photos by tags.
+
+- **Search Functionality**
+  - Text search to find photos by tags or photo names.
+  - Search bar integrated into the header.
+
+## Technologies Used
+- React.js 
+- React Router
+- Axios for API calls
+- CSS / Tailwind CSS 
+- React Icons 
+
+## Setup Instructions
+
+  1. git clone https://github.com/yourusername/google-photos-clone-frontend.git
+  2. cd google-photos-clone-frontend
+  3. npm install
+  4. npm run dev
