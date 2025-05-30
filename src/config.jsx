@@ -1,5 +1,5 @@
 const config = {
-    apiBaseUrl: "https://g-photos-backend.onrender.com/api/v1",
+    apiBaseUrl: "http://localhost:5000/api/v1",
 };
 
 export default config;
