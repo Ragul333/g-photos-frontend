@@ -45,6 +45,6 @@ This is the frontend part of a Google Photos clone application built with React.
 ## Setup Instructions
 
   1. git clone https://github.com/Ragul333/g-photos-frontend.git
-  2. cd google-photos-clone-frontend
+  2. cd g-photos-frontend
   3. npm install
   4. npm run dev
