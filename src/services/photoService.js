@@ -6,11 +6,14 @@ const getAllPhotos = async () => {
     return response.data;
 };
 
-const uploadPhoto = async (form) => {
+const uploadPhoto = async (forms) => {
     const formData = new FormData();
-    formData.append('file', form?.file);
-    formData.append('title', form?.title);
-    formData.append('description', form?.description);
+
+    forms.forEach((form, index) => {
+        formData.append('files', form.file);
+        formData.append(`titles[${index}]`, form.title || '');
+        formData.append(`descriptions[${index}]`, form.description || '');
+    });
 
     const response = await api.post('/photos/upload', formData, {
         headers: {
@@ -20,6 +23,7 @@ const uploadPhoto = async (form) => {
 
     return response.data;
 };
+
 
 const getAllFavorites = async () => {
     const response = await api.get("/photos/favorites");
@@ -43,6 +47,33 @@ const restorePhoto = async (id) => {
     await api.put(`/photos/restore/${id}`)
 }
 
+const updatePhotoMetadata = async (photoId, { title, description, tags, albumId }) => {
+    const body = {};
+    if (title !== undefined) body.title = title;
+    if (description !== undefined) body.description = description;
+    if (tags !== undefined) body.tags = tags;         
+    if (albumId !== undefined) body.albumId = albumId;
+
+    try {
+        const response = await api.patch(`/photos/${photoId}/metadata`, body);
+        return response.data.data;  
+    } catch (error) {
+        console.error('Error updating photo metadata:', error.response?.data || error.message);
+        throw error;
+    }
+}
+
+const getPhotoMetadata = async (photoId) => {
+    try {
+        const response = await api.get(`/photos/${photoId}/metadata`);
+        return response.data.data; 
+    } catch (error) {
+        console.error('Error fetching photo metadata:', error.response?.data || error.message);
+        throw error;
+    }
+};
+
+
 export default {
     getAllPhotos,
     uploadPhoto,
@@ -50,7 +81,9 @@ export default {
     getPhotosFromTrash,
     toggleFavorite,
     trashPhoto,
-    restorePhoto
+    restorePhoto,
+    updatePhotoMetadata,
+    getPhotoMetadata
 };
 
 

@@ -1,10 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { MdInsertPhoto } from "react-icons/md";
 import { MdOutlinePhotoAlbum } from "react-icons/md";
 import { FaRegStar } from "react-icons/fa";
 import { FaTrashCan } from "react-icons/fa6";
-
 
 const Sidebar = () => {
     const navItems = [
@@ -15,20 +14,24 @@ const Sidebar = () => {
     ];
 
     return (
-        <nav className="min-h-screen p-6 w-64">
-            <h2 className="text-2xl font-semibold mb-6 p-2 uppercase">G - Photos</h2>
+        <nav className="min-h-screen p-2 w-full">
+            <h2 className="text-2xl font-semibold mb-9 p-2 uppercase">G - Photos</h2>
             <ul className="space-y-4">
                 {navItems.map(({ name, path, icon }) => (
                     <li key={name}>
-                        <Link
+                        <NavLink
                             to={path}
-                            className="block hover:bg-[#d9d9d9] px-3 py-2 rounded-full transition-colors pl-5 text-[#444746] flex items-end"
+                            className={({ isActive }) =>
+                                `px-3 py-3 rounded-full transition-colors pl-5 text-[#444746] flex items-end  ${
+                                    isActive ? 'bg-[#C2E7FF] font-medium text-[#001D35]' : 'hover:bg-[#d9d9d980] '
+                                }`
+                            }
                         >
-                            <span className='mr-2 text-xl'>
+                            <span className='ml-2 mr-3 text-xl '>
                                 {icon}
                             </span>
                             {name}
-                        </Link>
+                        </NavLink>
                     </li>
                 ))}
             </ul>
